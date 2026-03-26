@@ -173,18 +173,24 @@ https://abc123.ngrok-free.app/mcp
 
 ### 3. Connect in ChatGPT
 
-1. **Enable Developer Mode** — Go to [ChatGPT Settings](https://chatgpt.com) → **Apps & Connectors** → **Advanced settings** (bottom) → Toggle **Developer Mode** on
+1. **Enable Developer Mode** — Go to [ChatGPT Settings](https://chatgpt.com) → **Apps** → **Advanced settings** (bottom) → Toggle **Developer Mode** on
 
-2. **Create a Connector** — Go to **Settings → Apps & Connectors** → Click **Create**:
-   - **Name:** Your app name (e.g., "Blog Reader")
-   - **Description:** What it does (e.g., "Browse and search blog posts")
-   - **Connector URL:** Your ngrok MCP endpoint (e.g., `https://abc123.ngrok-free.app/mcp`)
-   - Click **Create** — you'll see your tools listed if the connection succeeds
+2. **Create an App** — In **Settings → Apps**, click **Create app**:
 
-3. **Use It** — Open a new ChatGPT conversation:
-   - Click the **+** button near the message box → **More**
-   - Select your connector from the list
-   - Ask ChatGPT something like *"Show me some blog posts"* — it will call your tool and render the widget
+   ![Create App](docs/screenshots/create-app.png)
+
+   - **Name:** Your app name (e.g., "MyGPTApp")
+   - **MCP Server URL:** Your ngrok MCP endpoint (e.g., `https://abc123.ngrok-free.app/mcp`)
+   - **Authentication:** No Auth (for local development)
+   - Check the acknowledgment checkbox and click **Create**
+
+   ![App Config](docs/screenshots/app-config.png)
+
+3. **Use It** — Open a new ChatGPT conversation and ask something like *"Show me some blog posts"*:
+
+   ![App in Action](docs/screenshots/app-usage.png)
+
+   > **Note:** During development, ChatGPT won't automatically load your app. You need to explicitly invoke it by typing `/MyGPTApp` (or whatever you named it) in the chat. In production, ChatGPT will load the app automatically based on context.
 
 ### Refreshing After Changes
 
