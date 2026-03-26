@@ -18,10 +18,12 @@ export interface WidgetConfig {
 
 function findWidgetFile(widgetName: string, ext: 'js' | 'css'): string {
   const filename = `${widgetName}.${ext}`;
-  const buildPath = join(__dirname, '../../web/dist', filename);
+  // From build/server/src/resources/ → go up 4 levels to project root → web/dist/
+  const buildPath = join(__dirname, '../../../../web/dist', filename);
   if (existsSync(buildPath)) {
     return buildPath;
   }
+  // From source server/src/resources/ → go up 3 levels to project root → web/dist/
   const sourcePath = join(__dirname, '../../../web/dist', filename);
   if (existsSync(sourcePath)) {
     return sourcePath;
