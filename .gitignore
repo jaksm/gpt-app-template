@@ -1,0 +1,13 @@
+node_modules
+.DS_Store
+build
+web/dist
+coverage
+.vitest
+*.lcov
+.env
+inspector-config.json
+
+*storybook.log
+storybook-static
+web/storybook-static
