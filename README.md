@@ -140,7 +140,7 @@ To see your app live inside ChatGPT, you need to:
 npm run build
 
 # Start the MCP server (default port 3000)
-node build/index.js
+node build/server/src/index.js
 ```
 
 The server starts at `http://localhost:3000` with the MCP endpoint at `/mcp`.
@@ -190,7 +190,7 @@ https://abc123.ngrok-free.app/mcp
 
 When you update tools or widgets:
 ```bash
-npm run build && node build/index.js
+npm run build && node build/server/src/index.js
 ```
 Then in ChatGPT: **Settings → Apps & Connectors** → click your connector → **Refresh**.
 

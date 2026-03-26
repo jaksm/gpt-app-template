@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "bin": {
-    "gpt-app-template": "./build/index.js"
+    "gpt-app-template": "./build/server/src/index.js"
   },
   "files": [
     "build"
@@ -20,7 +20,7 @@
     "verify": "npm run tscheck && npm run test && npm run build",
     "build": "npm run build:web && npm run build:server",
     "build:web": "vite build web",
-    "build:server": "tsc && chmod 755 build/index.js",
+    "build:server": "tsc && chmod 755 build/server/src/index.js",
     "debug": "npx @modelcontextprotocol/inspector --config inspector-config.json --server gpt-app-template",
     "storybook": "storybook dev -p 6006 --config-dir web/.storybook",
     "storybook:build": "storybook build --config-dir web/.storybook --output-dir web/storybook-static"
