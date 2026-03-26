@@ -126,6 +126,74 @@ npm run test
 
 Edit `api-client/api.ts`. The template uses [JSONPlaceholder](https://jsonplaceholder.typicode.com) as a demo API. Replace with your own API — just export async functions that your tools can call.
 
+## Run in ChatGPT
+
+To see your app live inside ChatGPT, you need to:
+1. Build and start the MCP server
+2. Expose it over HTTPS with ngrok
+3. Create a connector in ChatGPT
+
+### 1. Build & Start the Server
+
+```bash
+# Build widgets + server
+npm run build
+
+# Start the MCP server (default port 3000)
+node build/index.js
+```
+
+The server starts at `http://localhost:3000` with the MCP endpoint at `/mcp`.
+
+Verify it's running:
+```bash
+curl http://localhost:3000
+# → "GPT App Template MCP server"
+```
+
+### 2. Expose with ngrok
+
+ChatGPT needs an HTTPS URL to reach your server. Use [ngrok](https://ngrok.com/) to create a tunnel:
+
+```bash
+# Install ngrok (if you haven't)
+brew install ngrok   # macOS
+# or: npm install -g ngrok
+
+# Expose your local server
+ngrok http 3000
+```
+
+ngrok will give you a public URL like `https://abc123.ngrok-free.app`. Your MCP endpoint is:
+```
+https://abc123.ngrok-free.app/mcp
+```
+
+> **Tip:** Use `ngrok http 3000 --url your-custom-domain.ngrok-free.app` for a stable URL (requires free ngrok account).
+
+### 3. Connect in ChatGPT
+
+1. **Enable Developer Mode** — Go to [ChatGPT Settings](https://chatgpt.com) → **Apps & Connectors** → **Advanced settings** (bottom) → Toggle **Developer Mode** on
+
+2. **Create a Connector** — Go to **Settings → Apps & Connectors** → Click **Create**:
+   - **Name:** Your app name (e.g., "Blog Reader")
+   - **Description:** What it does (e.g., "Browse and search blog posts")
+   - **Connector URL:** Your ngrok MCP endpoint (e.g., `https://abc123.ngrok-free.app/mcp`)
+   - Click **Create** — you'll see your tools listed if the connection succeeds
+
+3. **Use It** — Open a new ChatGPT conversation:
+   - Click the **+** button near the message box → **More**
+   - Select your connector from the list
+   - Ask ChatGPT something like *"Show me some blog posts"* — it will call your tool and render the widget
+
+### Refreshing After Changes
+
+When you update tools or widgets:
+```bash
+npm run build && node build/index.js
+```
+Then in ChatGPT: **Settings → Apps & Connectors** → click your connector → **Refresh**.
+
 ## Development
 
 ```bash
