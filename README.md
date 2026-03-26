@@ -192,6 +192,10 @@ https://abc123.ngrok-free.app/mcp
 
    > **Note:** During development, ChatGPT won't automatically load your app. You need to explicitly invoke it by typing `/MyGPTApp` (or whatever you named it) in the chat. In production, ChatGPT will load the app automatically based on context.
 
+   ChatGPT will call your tool and render the widget with interactive UI:
+
+   ![Widget Result](docs/screenshots/widget-result.png)
+
 ### Refreshing After Changes
 
 When you update tools or widgets:
